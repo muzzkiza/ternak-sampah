@@ -1,0 +1,416 @@
+/* --- Reset & Font --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  line-height: 1.6;
+  background-color: #fdfdfd;
+  color: #222;
+}
+
+/* --- Container --- */
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* --- Header --- */
+header {
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+header .logo {
+  max-width: 150px;
+  display: flex;
+  align-items: center;
+  line-height: 1.2;
+}
+
+header .logo a, header .logo p {
+  text-decoration: none;
+  color: rgb(111, 201, 171);
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+/* Ganti bagian nav a dan tambahkan pseudo-element */
+nav a, nav p{
+  position: relative;
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+  padding-bottom: 6px;
+}
+
+/* Bikin garis bawah dengan ::after */
+nav a::after, nav p::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: #6b6b6b;
+  transition: width 0.3s ease;
+}
+
+/* Saat hover, lebar garisnya jadi penuh */
+nav a:hover::after, nav p:hover::after {
+  width: 100%;
+}
+
+/* --- Dropdown --- */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  list-style: none;
+  padding: 0.5rem 0;
+  min-width: 150px;
+  display: none; /* disembunyikan dulu */
+  z-index: 20;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #222;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.dropdown-menu li p:hover {
+  background: #f5f5f5;
+}
+
+/* Saat hover ke parent-nya, tampilkan dropdown */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Biar tanda panah nggak nempel */
+.dropdown > p {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Optional: animasi munculnya dropdown */
+.dropdown-menu {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+  display: block;
+}
+
+.arrow {
+  font-size: 0.6em; /* kecil biar nggak ganggu teks */
+  opacity: 0.7; /* lebih halus */
+  margin-left: 4px;
+  transition: transform 0.2s ease;
+}
+
+.dropdown:hover .arrow {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+/* --- Hamburger Setup (Default: Hidden on Desktop) --- */
+#menu-toggle {
+  display: none; /* Sembunyikan checkbox */
+}
+
+.hamburger {
+  display: none; /* Sembunyikan ikon hamburger di desktop */
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 20;
+  color: #222;
+}
+
+/* --- Hero Section --- */
+.hero {
+  padding: 4rem 0;
+}
+
+.container-hero {
+  width: 90%;
+  max-width: 1000px;
+  padding: 3rem 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+}
+
+.hero-title {
+  border-radius: 50%;
+  padding: 1rem 0 0 3rem;
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+
+.hero-text h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-text p {
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+  color: #444;
+}
+
+.btn {
+  display: inline-block;
+  background: #0077ff;
+  color: #fff;
+  padding: 0.7rem 1.3rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #005fcb;
+}
+
+/* --- Blog Section --- */
+.blog {
+  padding: 3rem 0;
+}
+
+.blog h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  transition: transform 0.2s;
+}
+
+.card iframe {
+  border-radius: 6px;
+  justify-content: center;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.card a {
+  color: #0077ff;
+  text-decoration: none;
+}
+
+/* --- Footer --- */
+footer .container {
+  padding: 2rem 0;
+  color: #555;
+  font-size: 0.9rem;
+  text-align: center;
+  border-top: 1px solid #ddd;
+}
+
+footer a svg {
+  color: #555;
+  margin: 0 0.7rem;
+  width: 2%;
+  height: 2%;
+  transition: transform 0.2s;
+  margin-bottom: 0.5rem;
+}
+
+footer a svg:hover {
+  transform: translateY(-4px);
+}
+
+/* --- Media Query untuk Mobile (Max-width 768px) --- */
+@media (max-width: 768px) {
+  /* --- Container --- */
+  .container,
+  .container-hero {
+    width: 95%; /* Sedikit lebih lebar untuk mobile */
+    padding: 0 1rem; /* Tambahkan padding samping untuk konten */
+  }
+
+  /* --- Header / Navigasi (Baru) --- */
+  header .container {
+    /* Kembali ke justify-content: space-between agar logo dan hamburger terpisah */
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  header .logo {
+    max-width: 150px; /* Kembalikan ukuran logo */
+    margin-bottom: 0;
+  }
+
+  /* Tampilkan ikon hamburger */
+  .hamburger {
+    display: block;
+    order: 2; /* Pastikan hamburger di kanan */
+  }
+
+  /* Atur tampilan navigasi untuk mobile (sekarang disembunyikan secara default) */
+  nav {
+    /* Posisikan menu agar menutupi sebagian layar */
+    position: absolute;
+    top: 60px; /* Sesuaikan dengan tinggi header */
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    /* Sembunyikan secara default */
+    display: none;
+    transition: transform 0.3s ease-in-out;
+    z-index: 15;
+  }
+
+  /* Tata letak item menu di mobile (vertikal) */
+  nav ul {
+    flex-direction: column;
+    gap: 0;
+    text-align: left;
+  }
+
+  nav ul li {
+    border-bottom: 1px solid #eee;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 0.75rem 1rem;
+    width: 100%;
+  }
+
+  /* Hapus garis bawah di mobile untuk menghindari kerumitan */
+  nav a::after {
+    content: none;
+  }
+
+  /* Tampilkan nav saat checkbox dicentang */
+  #menu-toggle:checked ~ nav {
+    display: block;
+  }
+
+  /* Atur ulang Dropdown untuk tampilan vertikal */
+  .dropdown {
+    position: static;
+  }
+
+  .dropdown-menu {
+    position: static; /* Hilangkan positioning absolute */
+    min-width: 100%;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    margin-left: 1rem; /* Indentasi agar terlihat seperti sub-menu */
+  }
+
+  .dropdown:hover .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    display: block; /* Tetap tampilkan saat hover */
+  }
+
+  /* --- Hero Section --- */
+  .container-hero {
+    flex-direction: column; /* Tumpuk elemen secara vertikal */
+    padding: 2rem 0;
+    text-align: center;
+    border-bottom: none; /* Hapus garis bawah di mobile */
+  }
+
+  .hero-title {
+    border-radius: 0; /* Hilangkan efek lingkaran */
+    padding: 0;
+    font-size: 2rem; /* Perbesar sedikit */
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .hero-text p {
+    max-width: 100%; /* Gunakan lebar penuh */
+  }
+
+  /* --- Blog Section --- */
+  .blog-grid {
+    /* Hapus grid dan ganti dengan tumpukan vertikal */
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  /* Ukuran iframe disesuaikan agar full-width di mobile */
+  .card iframe {
+    width: 100%;
+    height: 200px; /* Tinggi disesuaikan */
+  }
+
+  /* --- Footer --- */
+  footer a svg {
+    width: 5%; /* Perbesar ikon sosial media */
+    height: 5%;
+  }
+}
